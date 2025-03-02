@@ -16,7 +16,8 @@ dependencies {
     testImplementation group: 'org.testng', name: 'testng', version: '7.11.0'
     // Selenium
     implementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '4.29.0'
-
+    // CSV
+    implementation group: 'com.opencsv', name: 'opencsv', version: '5.10'
 }
 
 test {
