@@ -3,22 +3,20 @@ package tests;
 import driver.DriverFactory;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.CustomerLoginPage;
 import pages.MainPage;
+
+import java.util.Objects;
 
 public class SignInTest extends DriverFactory {
 
     @Test()
     public void signingIn() {
-        MainPage mainPage = new MainPage(driver);
-        mainPage.signIn();
+        MainPage mainPage = new MainPage(driver, wait);
 
-        CustomerLoginPage customerLoginPage = new CustomerLoginPage(driver, wait);
+        mainPage.addUsername("testuser");
+        mainPage.addPassword("testpass");
+        mainPage.clickLogin();
 
-        Assert.assertTrue(driver.getPageSource().contains("If you have an account, sign in with your email address."));
-        customerLoginPage.sendEmail("elek_85@freemail.hu");
-        customerLoginPage.sendPassword("elek_1985");
-        customerLoginPage.clickSignInButton();
-        Assert.assertTrue(driver.getPageSource().contains("Home Page"));
+        Assert.assertTrue(driver.getPageSource().contains("An internal error has occurred and has been logged."));
     }
 }

@@ -1,19 +1,12 @@
 package driver;
 
-import com.opencsv.CSVReader;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
-import org.testng.annotations.DataProvider;
-
-import java.io.FileReader;
-import java.lang.reflect.Array;
 import java.time.Duration;
-import java.util.ArrayList;
-import java.util.List;
 
 public class DriverFactory {
     protected WebDriver driver;
@@ -32,10 +25,9 @@ public class DriverFactory {
         /* ------ configuration ends ------ */
     }
 
-    @BeforeTest
-    public void registration() {
-        driver.get("""
-                https://magento.softwaretestingboard.com/""");
+    @BeforeTest()
+    public void enterPage() {
+        driver.get("https://parabank.parasoft.com");
     }
 
     // Quit the finished browser
